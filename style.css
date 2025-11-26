@@ -430,12 +430,3 @@ p { margin: 0; color: #d2d2d2; }
   transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-.logo {
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-/* коли скролимо вниз */
-.logo.scrolled {
-  transform: scale(0.7);
-  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
-}
