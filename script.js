@@ -97,6 +97,35 @@ function showUserProfile(name, pic) {
   document.body.prepend(container);
 }
 
+//--------------------------------------------------------------------
+document.addEventListener('click', e => {
+  if (!sidePanel.contains(e.target) && !openPanel.contains(e.target)) {
+     sidePanel.classList.remove('active');
+  }
+});
+
+document.querySelectorAll('.nav-btn').forEach(btn=>{
+   btn.addEventListener('click', ()=>{
+      const id = btn.innerText.toLowerCase();
+      const target = document.getElementById(id);
+      if(target) {
+         target.scrollIntoView({behavior:'smooth'});
+         sidePanel.classList.remove('active');
+      }
+   });
+});
+
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+     if(entry.isIntersecting){
+       entry.target.classList.add("visible");
+     }
+  });
+},{threshold:0.2});
+
+document.querySelectorAll("section").forEach(sec=>io.observe(sec));
+
+
 
 
 
