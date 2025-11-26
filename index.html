@@ -1,214 +1,144 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ALTSETING Token</title>
-  <style>
-    /* Загальні стилі */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #121212;
-      color: #eee;
-      min-height: 100vh;
-      padding-top: 60px;
-    }
-
-    /* Права панель */
-    .right-panel {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      background: #1e1e1e;
-      border-radius: 8px;
-      padding: 15px 20px;
-      width: 220px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.7);
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      z-index: 1000;
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-    }
-
-    .right-panel.active {
-      transform: translateX(0);
-    }
-
-    /* Кнопка закриття */
-    .close-right-btn {
-      align-self: flex-end;
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 22px;
-      cursor: pointer;
-      padding: 0;
-      margin: 0;
-      line-height: 1;
-    }
-
-    /* Область профілю Google */
-    .google-profile-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .right-user-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 0 5px #0f9d58;
-    }
-
-    .right-user-name {
-      color: white;
-      font-weight: 600;
-      font-size: 16px;
-      white-space: nowrap;
-    }
-
-    /* Кнопка Google Login - преміум стиль */
-    .premium-google-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #202124;
-      color: white;
-      border: none;
-      padding: 10px 14px;
-      border-radius: 24px;
-      font-weight: 600;
-      cursor: pointer;
-      width: 100%;
-      justify-content: center;
-      transition: background-color 0.2s ease;
-      font-size: 14px;
-      user-select: none;
-    }
-
-    .premium-google-btn:hover {
-      background-color: #303134;
-    }
-
-    .btn-icon {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* Кнопка відкриття панелі ⚙️ */
-    .open-right-btn {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      background: #333;
-      border: none;
-      border-radius: 50%;
-      width: 44px;
-      height: 44px;
-      color: white;
-      font-size: 22px;
-      cursor: pointer;
-      z-index: 1100;
-      box-shadow: 0 0 10px rgba(0,0,0,0.7);
-      transition: background-color 0.2s ease;
-    }
-
-    .open-right-btn:hover {
-      background-color: #555;
-    }
-  </style>
-
-  <!-- Google Identity Services -->
+  <link rel="stylesheet" href="style.css" />
   <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
 </head>
 <body>
+   <!-- PRELOADER -->
+<div id="preloader">
+  <div class="loader-wrapper">
+    <div class="loader-circle"></div>
+    <img src="logo.jpg" alt="ALTSETING Logo" class="loader-logo">
+  </div>
+  <div class="loader-text">Loading...</div>
+</div>
 
-  <!-- Права панель -->
-  <div id="rightPanel" class="right-panel" aria-label="Панель користувача">
-    <button id="closeRightPanel" class="close-right-btn" aria-label="Закрити панель">✕</button>
+<!-- GOOGLE LOGIN (не показувати стандартну) -->
+<div id="g_id_onload"
+     data-client_id="1009748031101-2jjvuogj6sn1k2r87mge9lgku04rdr1v.apps.googleusercontent.com"
+     data-callback="handleCredentialResponse">
+</div>
 
-    <div id="googleProfileArea" class="google-profile-area" aria-live="polite" aria-atomic="true">
-      <!-- Кнопка входу або аватарка буде тут -->
-    </div>
+<!-- Ховаємо стандартну кнопку -->
+<div class="g_id_signin" style="display:none;"></div>
+
+<!-- Моя кастомна преміум-кнопка -->
+<button id="customGoogleBtn" class="premium-google-btn">
+  <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="btn-icon">
+  <span>Увійти через Google</span>
+</button>
+
+<!-- BUTTON THAT OPENS RIGHT PANEL -->
+<button id="openRightPanel" class="open-right-btn">⚙</button>
+
+<!-- RIGHT COLLAPSING PANEL -->
+<div id="rightPanel" class="right-panel">
+  <button id="closeRightPanel" class="close-right-btn">✕</button>
+
+  <h3 class="panel-title">ALTSETING Menu</h3>
+
+  <div class="panel-section">
+      <button id="bgTogglePanel" class="panel-btn">
+        🎨 Перемкнути фон
+      </button>
   </div>
 
-  <!-- Кнопка відкриття правої панелі -->
-  <button id="openRightPanel" class="open-right-btn" aria-label="Відкрити панель налаштувань">⚙️</button>
+  <div class="panel-section" id="googleProfileArea">
+      <!-- Аватарка буде тут -->
+  </div>
+</div>
 
-  <script>
-    const rightPanel = document.getElementById("rightPanel");
-    const openRightPanel = document.getElementById("openRightPanel");
-    const closeRightPanel = document.getElementById("closeRightPanel");
-    const googleProfileArea = document.getElementById("googleProfileArea");
+  
+  <!-- Бокова панель -->
+<div id="sidePanel" class="side-panel">
+  <button id="closePanel" class="close-btn">✕</button>
+  <nav class="nav-menu">
+    <button class="nav-btn">Головна</button>
+    <button class="nav-btn">Про нас</button>
+    <button class="nav-btn">WebApp</button>
+    <button class="nav-btn">NFT</button>
+    <button class="nav-btn">Бот</button>
+    <button class="nav-btn">Команда</button>
+    <button class="nav-btn">Реферальна система</button>
+    <button class="nav-btn">Партнерство</button>
+    <button class="nav-btn">Whitepaper</button>
+    <button class="nav-btn">Контакти</button>
 
-    // Відкрити/закрити праву панель
-    openRightPanel.addEventListener("click", () => {
-      rightPanel.classList.add("active");
-    });
+    <div class="mini-buttons">
+      <button class="mini-btn">⚙️</button>
+      <button class="mini-btn">💬</button>
+      <button class="mini-btn">💎</button>
+      <button class="mini-btn">📈</button>
+      <button class="mini-btn">🔗</button>
+    </div>
+  </nav>
+</div>
 
-    closeRightPanel.addEventListener("click", () => {
-      rightPanel.classList.remove("active");
-    });
+<!-- Кнопка відкриття -->
+<button id="openPanel" class="open-panel-btn">☰</button>
 
-    // Закрити панель при кліку поза нею
-    document.addEventListener("click", e => {
-      if (!rightPanel.contains(e.target) && !openRightPanel.contains(e.target)) {
-        rightPanel.classList.remove("active");
-      }
-    });
 
-    // Показати аватар користувача або кнопку входу
-    function showUserProfile(name, pic) {
-      if(name && pic) {
-        googleProfileArea.innerHTML = `
-          <div class="right-user-box" role="region" aria-label="Профіль користувача">
-            <img src="${pic}" alt="${name}" class="right-user-avatar" />
-            <span class="right-user-name">${name}</span>
-          </div>
-        `;
-      } else {
-        googleProfileArea.innerHTML = `
-          <button id="customGoogleBtn" class="premium-google-btn" aria-label="Увійти через Google">
-            <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="btn-icon" alt="Google" />
-            <span>Увійти через Google</span>
-          </button>
-        `;
+  <!-- Далі твій основний сайт -->
+  <div id="main-content" style="opacity:0; visibility:hidden;">
+    <!-- Твій сайт тут -->
+  </div>
+  <div class="ui-topbar">
+    <button id="bgToggle" class="neo-toggle" aria-label="Переключити фон">
+      <span class="dot"></span>
+      <span class="label">GRAY ⇄ BLACK</span>
+    </button>
+  </div>
 
-        document.getElementById("customGoogleBtn").addEventListener("click", () => {
-          google.accounts.id.prompt();
-        });
-      }
-    }
+  <header class="hero" id="hero">
+    <img src="meta.no.fon.jpg.png" alt="SETI Left" class="seti seti-left" />
+    <img src="logo.jpg" alt="ALTSETING Token" id="heroLogo" class="logo" />
+    <img src="seti.no.fon.jpg.png" alt="SETI Right" class="seti seti-right" />
+  </header>
 
-    // Ініціалізація користувача з localStorage
-    const savedUser = localStorage.getItem("alt_user");
-    if (savedUser) {
-      const u = JSON.parse(savedUser);
-      showUserProfile(u.name, u.picture);
-    } else {
-      showUserProfile(null, null);
-    }
+  <main class="content">
+    <section class="intro">
+      <h2>ALTSETING Token</h2>
+      <p class="intro-text">
+        ALTSETING Token — це революційний проєкт, який поєднує гейміфікацію, NFT, Telegram-бота та криптовалюту в єдину екосистему.  
+        З нашою командою ви отримаєте новий досвід у світі Web3.  
+        Ми розробляємо платформу, яка дозволить бізнесу інтегрувати ALTST у свої сервіси, здійснювати платежі та управляти фінансами через блокчейн.  
+        Підтримка NFT, ігор, винагороди за активність, реферальна система та масштабування — усе це частина нашого бачення.
+      </p>
+    </section>
 
-    // Обробник відповіді Google Login
-    function handleCredentialResponse(response) {
-      const data = jwt_decode(response.credential);
-      const userName = data.name;
-      const userPicture = data.picture;
+    <section class="feature" id="feature1">
+      <h3>Гейміфікований майнінг у Telegram</h3>
+      <p>Користувачі можуть отримувати ALTST через бот, виконуючи завдання і взаємодіючи з екосистемою безпосередньо у Telegram.</p>
+    </section>
 
-      localStorage.setItem("alt_user", JSON.stringify({ name: userName, picture: userPicture }));
-      showUserProfile(userName, userPicture);
-    }
+    <section class="feature" id="feature2">
+      <h3>Екосистема WebApp і NFT</h3>
+      <p>Запуск WebApp, де можна торгувати, брати участь у подіях, запускати NFT-проєкти чи отримувати бонуси.</p>
+    </section>
 
-    // Зробити доступним функцію для callback Google
-    window.handleCredentialResponse = handleCredentialResponse;
-  </script>
+    <section class="feature" id="feature3">
+      <h3>Інтеграція бізнесу</h3>
+      <p>Платформа дозволить компаніям використовувати ALTST як засіб оплати, стимулювати клієнтів та впроваджувати токен у їх бізнес-моделі.</p>
+    </section>
+
+    <section class="feature" id="feature4">
+      <h3>Ком’юніті та винагороди</h3>
+      <p>Активність, реферали, ексклюзивні NFT — усе стимулює розвиток спільноти і залученість користувачів.</p>
+    </section>
+
+    <section class="feature" id="feature5">
+      <h3>Масштабованість і безпека</h3>
+      <p>Використовуємо передові блокчейн-технології для забезпечення швидкості транзакцій і захисту від атак.</p>
+    </section>
+
+    <!-- Додаткові розділи, якщо потрібні -->
+  </main>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
