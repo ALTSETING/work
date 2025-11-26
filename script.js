@@ -120,3 +120,13 @@ window.addEventListener('scroll', () => {
   }
 });
 
+window.addEventListener('load', () => {
+  const preloader = document.getElementById('preloader');
+  preloader.classList.add('fade-out');
+
+  // видалити елемент з DOM після анімації
+  setTimeout(() => {
+    preloader.style.display = 'none';
+  }, 800); // 800ms = тривалість fade-out в CSS
+});
+
