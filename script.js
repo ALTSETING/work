@@ -40,14 +40,6 @@ function onScroll() {
 window.addEventListener('scroll', onScroll, { passive: true });
 window.addEventListener('DOMContentLoaded', onScroll);
 
-// ==================== BACKGROUND TOGGLE ====================
-const bgToggle = document.getElementById('bgToggle');
-let flipped = false;
-bgToggle.addEventListener('click', () => {
-  flipped = !flipped;
-  document.documentElement.style.setProperty('--angle', flipped ? '315deg' : '135deg');
-});
-
 // ==================== SIDE PANEL ====================
 const sidePanel = document.getElementById('sidePanel');
 const openPanel = document.getElementById('openPanel');
@@ -76,34 +68,32 @@ document.querySelectorAll('.nav-btn').forEach(btn => {
 });
 
 
-// ==================== GOOGLE LOGIN ====================
+// GOOGLE LOGIN
 const customGoogleBtn = document.getElementById("customGoogleBtn");
 customGoogleBtn.addEventListener("click", () => {
   google.accounts.id.prompt();
 });
 
-// Обробка відповіді Google
 function handleCredentialResponse(response) {
   const data = jwt_decode(response.credential);
-
   const userName = data.name;
   const userPicture = data.picture;
 
-  // Збереження
   localStorage.setItem("alt_user", JSON.stringify({ name: userName, picture: userPicture }));
 
   showUserProfile(userName, userPicture);
 }
 
-// Відображення профілю в правій панелі
 function showUserProfile(name, pic) {
   const container = document.getElementById("googleProfileArea");
-  container.innerHTML = `
-    <div class="right-user-box">
-        <img src="${pic}" class="right-user-avatar" alt="${name}">
-        <span class="right-user-name">${name}</span>
-    </div>
-  `;
+  if(container) {
+    container.innerHTML = `
+      <div class="right-user-box">
+          <img src="${pic}" class="right-user-avatar" alt="${name}">
+          <span class="right-user-name">${name}</span>
+      </div>
+    `;
+  }
 }
 
 // Показати профіль якщо вже авторизований
@@ -112,17 +102,6 @@ if (savedUser) {
   const u = JSON.parse(savedUser);
   showUserProfile(u.name, u.picture);
 }
-
-// ==================== INTERSECTION OBSERVER ====================
-const io = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
-    }
-  });
-}, { threshold: 0.2 });
-
-document.querySelectorAll("section").forEach(sec => io.observe(sec));
 
 // ==================== ETHEREUM WALLET ====================
 if (window.ethereum) {
