@@ -32,14 +32,24 @@
   <span>Увійти через Google</span>
 </button>
 
-  <!-- RIGHT CONTROL PANEL -->
-<div class="right-panel">
-    <button id="bgToggle" class="right-btn">
-        <span class="icon">🎨</span>
-        <span>Background</span>
-    </button>
+<!-- BUTTON THAT OPENS RIGHT PANEL -->
+<button id="openRightPanel" class="open-right-btn">⚙</button>
 
-    <div id="googleProfileArea"></div>
+<!-- RIGHT COLLAPSING PANEL -->
+<div id="rightPanel" class="right-panel">
+  <button id="closeRightPanel" class="close-right-btn">✕</button>
+
+  <h3 class="panel-title">ALTSETING Menu</h3>
+
+  <div class="panel-section">
+      <button id="bgToggle" class="panel-btn">
+        🎨 Перемкнути фон
+      </button>
+  </div>
+
+  <div class="panel-section" id="googleProfileArea">
+      <!-- Аватарка буде тут -->
+  </div>
 </div>
 
   
