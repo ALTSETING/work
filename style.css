@@ -424,3 +424,8 @@ p { margin: 0; color: #d2d2d2; }
   filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));
 }
 
+#preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
