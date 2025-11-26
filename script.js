@@ -134,7 +134,7 @@ if (window.ethereum) {
 }
 
 // Кастомна темна преміальна кнопка → викликає Google Login
-document.getElementById("customGoogleBtn").addEventListener("click", () => {
+document.getElementById("bgTogglePanel").addEventListener("click", () => {
   google.accounts.id.prompt();
 });
 
