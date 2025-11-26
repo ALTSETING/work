@@ -109,3 +109,14 @@ if (window.ethereum) {
     .then(accounts => console.log("Connected:", accounts[0]))
     .catch(err => console.error(err));
 }
+
+const logo = document.querySelector('.logo');
+
+window.addEventListener('scroll', () => {
+  if(window.scrollY > 50){ // починає зменшуватися після 50px скролу
+    logo.classList.add('scrolled');
+  } else {
+    logo.classList.remove('scrolled');
+  }
+});
+
