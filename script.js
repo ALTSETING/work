@@ -173,6 +173,45 @@ if (saved) {
   showUserProfile(u.name, u.picture);
 }
 
+// RIGHT PANEL TOGGLE
+const rightPanel = document.getElementById("rightPanel");
+const openRightPanel = document.getElementById("openRightPanel");
+const closeRightPanel = document.getElementById("closeRightPanel");
+
+openRightPanel.addEventListener("click", () => {
+  rightPanel.classList.add("active");
+});
+
+closeRightPanel.addEventListener("click", () => {
+  rightPanel.classList.remove("active");
+});
+
+// Закриття при кліку поза панеллю
+document.addEventListener("click", e => {
+  if (!rightPanel.contains(e.target) && !openRightPanel.contains(e.target)) {
+    rightPanel.classList.remove("active");
+  }
+});
+
+// Google аватар в праву панель
+function showUserProfile(name, pic) {
+  const container = document.getElementById("googleProfileArea");
+
+  container.innerHTML = `
+    <div class="right-user-box">
+        <img src="${pic}" class="right-user-avatar">
+        <span class="right-user-name">${name}</span>
+    </div>
+  `;
+}
+
+// Якщо є авторизація — показати
+const saved = localStorage.getItem("alt_user");
+if (saved) {
+  const u = JSON.parse(saved);
+  showUserProfile(u.name, u.picture);
+}
+
 
 
 
