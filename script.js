@@ -75,19 +75,6 @@ document.querySelectorAll('.nav-btn').forEach(btn => {
   });
 });
 
-// ==================== RIGHT PANEL ====================
-const rightPanel = document.getElementById("rightPanel");
-const openRightPanel = document.getElementById("openRightPanel");
-const closeRightPanel = document.getElementById("closeRightPanel");
-
-openRightPanel.addEventListener("click", () => rightPanel.classList.add("active"));
-closeRightPanel.addEventListener("click", () => rightPanel.classList.remove("active"));
-
-document.addEventListener("click", e => {
-  if (!rightPanel.contains(e.target) && !openRightPanel.contains(e.target)) {
-    rightPanel.classList.remove("active");
-  }
-});
 
 // ==================== GOOGLE LOGIN ====================
 const customGoogleBtn = document.getElementById("customGoogleBtn");
