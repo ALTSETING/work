@@ -349,3 +349,24 @@ p { margin: 0; color: #d2d2d2; }
   border-radius: 50%;
   border: 2px solid #ff0077;
 }
+/*mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm*/
+.logo {
+   animation: logoEntrance 1.2s ease-out forwards;
+}
+@keyframes logoEntrance {
+   0% { transform: scale(0.7) translateY(-20px); opacity: 0;}
+   100% { transform: scale(1) translateY(0); opacity: 1;}
+}
+
+.nav-btn:hover {
+  background: linear-gradient(135deg,#ff5fd7,#5f9fff);
+  color: black;
+  box-shadow: 0 0 18px rgba(255,90,200,.5);
+}
+
+@media (max-width: 480px) {
+  .seti { width: 120px; opacity: .4; }
+  .logo { width: 250px; }
+}
+
+
