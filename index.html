@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ALTSETING Token</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
   <!-- PRELOADER -->
@@ -16,17 +15,6 @@
     </div>
     <div class="loader-text">Loading...</div>
   </div>
-
-  <!-- GOOGLE LOGIN -->
-  <div id="g_id_onload"
-       data-client_id="YOUR_CLIENT_ID_HERE"
-       data-callback="handleCredentialResponse">
-  </div>
-  <div class="g_id_signin" style="display:none;"></div>
-  <button id="customGoogleBtn" class="premium-google-btn">
-    <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="btn-icon">
-    <span>Увійти через Google</span>
-  </button>
 
   <!-- Бокова панель -->
   <div id="sidePanel" class="side-panel">
@@ -95,7 +83,6 @@
     </section>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
