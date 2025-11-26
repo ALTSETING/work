@@ -154,19 +154,16 @@ function handleCredentialResponse(response) {
   showUserProfile(userName, userPicture);
 }
 
-// Малюємо аватар в правому верхньому куті
+// Малюємо аватар у правій панелі
 function showUserProfile(name, pic) {
-  // якщо вже є (щоб не дублювалось) — видалити
-  const old = document.querySelector(".user-profile");
-  if (old) old.remove();
+  const container = document.getElementById("googleProfileArea");
 
-  const container = document.createElement('div');
-  container.className = 'user-profile';
   container.innerHTML = `
-    <img src="${pic}" alt="${name}" class="user-avatar">
-    <span class="user-name">${name}</span>
+    <div class="right-user-box">
+        <img src="${pic}" alt="${name}" class="right-user-avatar">
+        <span class="right-user-name">${name}</span>
+    </div>
   `;
-  document.body.appendChild(container);
 }
 
 // Якщо вже авторизований — показати аватар
