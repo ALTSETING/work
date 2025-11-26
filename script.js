@@ -125,10 +125,14 @@ const io = new IntersectionObserver(entries=>{
 
 document.querySelectorAll("section").forEach(sec=>io.observe(sec));
 
-if(window.ethereum){
-   const accounts = await ethereum.request({method:'eth_requestAccounts'});
-   console.log("Connected:", accounts[0]);
+if (window.ethereum) {
+  ethereum.request({ method: 'eth_requestAccounts' })
+    .then(accounts => {
+      console.log("Connected:", accounts[0]);
+    })
+    .catch(err => console.error(err));
 }
+
 
 
 
