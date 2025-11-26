@@ -112,13 +112,13 @@ if (window.ethereum) {
 
 const logo = document.querySelector('.logo');
 
-window.addEventListener('load', () => {
-  const preloader = document.getElementById('preloader');
-  preloader.classList.add('fade-out');
+const logo = document.querySelector('.logo');
 
-  // остаточно ховаємо після анімації
-  setTimeout(() => {
-    preloader.style.display = 'none';
-  }, 800);
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    logo.classList.add('scrolled');
+  } else {
+    logo.classList.remove('scrolled');
+  }
 });
 
