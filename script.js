@@ -133,6 +133,50 @@ if (window.ethereum) {
     .catch(err => console.error(err));
 }
 
+// Кастомна темна преміальна кнопка → викликає Google Login
+document.getElementById("customGoogleBtn").addEventListener("click", () => {
+  google.accounts.id.prompt();
+});
+
+// Google повертає токен
+function handleCredentialResponse(response) {
+  const data = jwt_decode(response.credential);
+
+  const userName = data.name;
+  const userPicture = data.picture;
+
+  // Збереження
+  localStorage.setItem("alt_user", JSON.stringify({
+    name: userName,
+    picture: userPicture
+  }));
+
+  showUserProfile(userName, userPicture);
+}
+
+// Малюємо аватар в правому верхньому куті
+function showUserProfile(name, pic) {
+  // якщо вже є (щоб не дублювалось) — видалити
+  const old = document.querySelector(".user-profile");
+  if (old) old.remove();
+
+  const container = document.createElement('div');
+  container.className = 'user-profile';
+  container.innerHTML = `
+    <img src="${pic}" alt="${name}" class="user-avatar">
+    <span class="user-name">${name}</span>
+  `;
+  document.body.appendChild(container);
+}
+
+// Якщо вже авторизований — показати аватар
+const saved = localStorage.getItem("alt_user");
+if (saved) {
+  const u = JSON.parse(saved);
+  showUserProfile(u.name, u.picture);
+}
+
+
 
 
 
