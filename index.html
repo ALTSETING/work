@@ -17,15 +17,21 @@
   <div class="loader-text">Loading...</div>
 </div>
 
-  <!-- GOOGLE LOGIN -->
+<!-- GOOGLE LOGIN (не показувати стандартну) -->
 <div id="g_id_onload"
      data-client_id="1009748031101-2jjvuogj6sn1k2r87mge9lgku04rdr1v.apps.googleusercontent.com"
      data-callback="handleCredentialResponse">
 </div>
 
-<div class="google-login">
-  <div class="g_id_signin" data-type="standard"></div>
-</div>
+<!-- Ховаємо стандартну кнопку -->
+<div class="g_id_signin" style="display:none;"></div>
+
+<!-- Моя кастомна преміум-кнопка -->
+<button id="customGoogleBtn" class="premium-google-btn">
+  <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="btn-icon">
+  <span>Увійти через Google</span>
+</button>
+
 
 
   <!-- Бокова панель -->
