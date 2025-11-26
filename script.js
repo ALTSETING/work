@@ -112,8 +112,6 @@ if (window.ethereum) {
 
 const logo = document.querySelector('.logo');
 
-const logo = document.querySelector('.logo');
-
 window.addEventListener('scroll', () => {
   if (window.scrollY > 50) {
     logo.classList.add('scrolled');
