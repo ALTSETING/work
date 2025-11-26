@@ -506,5 +506,124 @@ p { margin: 0; color: #d2d2d2; }
   to   { opacity: 1; transform: translateY(0);}
 }
 
+/* === RIGHT PANEL === */
+.right-panel {
+  position: fixed;
+  top: 0;
+  right: -300px; /* захована */
+  width: 260px;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(12px);
+  box-shadow: -4px 0 25px rgba(0,0,0,0.45);
+  padding: 70px 20px 20px;
+  border-left: 2px solid rgba(255,255,255,0.15);
+  transition: right 0.4s ease;
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.right-panel.active {
+  right: 0px;
+}
+
+/* Button to open panel */
+.open-right-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 22px;
+  padding: 8px 12px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  z-index: 1600;
+  transition: 0.3s;
+}
+
+.open-right-btn:hover {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.2);
+}
+
+/* Close button */
+.close-right-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.close-right-btn:hover {
+  transform: rotate(90deg);
+  color: #ff0077;
+}
+
+.panel-title {
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.panel-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Buttons inside panel */
+.panel-btn {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.panel-btn:hover {
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.05);
+}
+
+/* Google profile inside panel */
+.right-user-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(30, 30, 30, 0.7);
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.right-user-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+
+.right-user-name {
+  font-weight: 600;
+  color: #fff;
+}
+
 
 
