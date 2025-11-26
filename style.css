@@ -625,5 +625,71 @@ p { margin: 0; color: #d2d2d2; }
   color: #fff;
 }
 
+.top-right-panel {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(0,0,0,0.5);
+  padding: 6px 12px;
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+.premium-google-btn {
+  display: flex;
+  align-items: center;
+  background: #202124;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 24px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  gap: 8px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.premium-google-btn:hover {
+  background: #4285f4;
+  color: white;
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.open-right-btn {
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+
+.google-profile-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+}
+
+.right-user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+.right-user-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
 
 
