@@ -26,6 +26,99 @@
       border:1px solid #00ff88; padding:12px 24px; border-radius:12px;
     }
     .back:hover { background:#00ff8811; }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    
+    body {
+      background:#0a0a0f;
+      color:#e8e8e8;
+      font-family:'Courier New', monospace;
+      line-height:1.9;
+      font-size:17px;
+      min-height:100vh;
+      padding:30px 20px;
+    }
+
+    /* Кнопка назад */
+    .back {
+      position:fixed;
+      top:30px; left:30px;
+      z-index:100;
+      color:#00ff88;
+      text-decoration:none;
+      font-size:19px;
+      font-weight:bold;
+      border:2px solid #00ff88;
+      padding:14px 32px;
+      border-radius:14px;
+      transition:all 0.3s ease;
+    }
+    .back:hover {
+      background:#00ff8820;
+      box-shadow:0 0 25px #00ff8866;
+    }
+
+    /* Контейнер для двох блоків */
+    .blocks {
+      max-width:1280px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap:40px;
+      margin-top:80px;
+    }
+
+    /* Один квадратик */
+    .block {
+      background:#111118;
+      border:2px solid #00ff88;
+      border-radius:18px;
+      padding:50px 45px;
+      box-shadow:0 0 50px rgba(0,255,136,0.25);
+      transition:all 0.4s ease;
+    }
+    .block:hover {
+      transform:translateY(-8px);
+      box-shadow:0 0 70px rgba(0,255,136,0.45);
+    }
+
+    /* Заголовок блоку */
+    .block-title {
+      text-align:center;
+      font-size:30px;
+      color:#00ff88;
+      text-transform:uppercase;
+      letter-spacing:4px;
+      margin-bottom:50px;
+      text-shadow:0 0 20px #00ff88;
+    }
+
+    /* Рядки з ">" */
+    .line {
+      margin:17px 0;
+      padding-left:30px;
+      position:relative;
+      color:#e8e8e8;
+    }
+    .line::before {
+      content:"> ";
+      color:#00ff88;
+      position:absolute;
+      left:0;
+      font-weight:bold;
+      opacity:0.9;
+    }
+
+    /* Мобільна адаптація */
+    @media (max-width: 920px) {
+      .blocks { grid-template-columns:1fr; }
+      .block { padding:45px 35px; }
+      .block-title { font-size:26px; }
+    }
+    @media (max-width: 480px) {
+      .back { padding:12px 24px; font-size:17px; top:15px; left:15px; }
+      body { padding:15px; }
+    }
   </style>
 </head>
 <body>
