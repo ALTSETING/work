@@ -121,6 +121,75 @@
       .back { padding:12px 24px; font-size:17px; top:15px; left:15px; }
       body { padding:15px; }
     }
+
+    /* === НОВА СЕКЦІЯ ДЛЯ PDF === */
+    .pdf-section {
+      width:100%;
+      max-width:1100px;
+      margin:100px auto 60px;
+      padding:40px;
+      border:2px solid #00ff88;
+      border-radius:18px;
+      background:#111118;
+      box-shadow:0 0 50px rgba(0,255,136,0.25);
+    }
+    .pdf-title {
+      text-align:center;
+      font-size:28px;
+      color:#00ff88;
+      text-transform:uppercase;
+      letter-spacing:4px;
+      margin-bottom:50px;
+      text-shadow:0 0 15px #00ff88;
+    }
+    .pdf-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap:30px;
+    }
+    .pdf-item {
+      text-align:center;
+    }
+    .pdf-item a {
+      color:#e8e8e8;
+      text-decoration:none;
+      display:block;
+      margin-bottom:15px;
+      font-size:18px;
+    }
+    .pdf-item a:hover { color:#00ff88; }
+    .pdf-embed {
+      width:100%;
+      height:600px;
+      border:1px solid #00ff8833;
+      border-radius:12px;
+      background:#000;
+    }
+    .download-btn {
+      display:inline-block;
+      margin-top:15px;
+      padding:12px 28px;
+      background:transparent;
+      border:2px solid #00ff88;
+      color:#00ff88;
+      border-radius:12px;
+      text-decoration:none;
+      transition:0.3s;
+    }
+    .download-btn:hover {
+      background:#00ff8820;
+      box-shadow:0 0 25px #00ff8866;
+    }
+
+    @media (max-width:920px) {
+      .blocks, .pdf-section { grid-template-columns:1fr; }
+      .pdf-embed { height:500px; }
+    }
+    @media (max-width:480px) {
+      .back { padding:12px 24px; font-size:17px; top:15px; left:15px; }
+      .pdf-embed { height:400px; }
+    }
+    
   </style>
 </head>
 <body>
@@ -165,7 +234,29 @@
     <div class="line">Відповідальність команди обмежена публікацією коду</div>
     <div class="line">Використання протоколу = повна згода з цими умовами</div>
   </div>
+  
+<!-- НОВА СЕКЦІЯ — PDF ФАЙЛИ -->
+  <div class="pdf-section">
+    <div class="pdf-title">Official Documents</div>
 
+    <div class="pdf-grid">
+
+      <!-- PDF 1 -->
+      <div class="pdf-item">
+        <a href="pdf/legality-full.pdf" target="_blank">Legality & Compliance (PDF)</a>
+        <iframe src="pdf/legality-full.pdf" class="pdf-embed"></iframe>
+        <a href="pdf/legality-full.pdf" download class="download-btn">Download PDF</a>
+      </div>
+
+      <!-- PDF 2 — просто додай свій файл -->
+      <div class="pdf-item">
+        <a href="pdf/risk-disclosure.pdf" target="_blank">Risk Disclosure (PDF)</a>
+        <iframe src="pdf/risk-disclosure.pdf" class="pdf-embed"></iframe>
+        <a href="pdf/risk-disclosure.pdf" download class="download-btn">Download PDF</a>
+      </div>
+
+      <!-- Додавай ще PDF-и скільки завгодно -->
+  
 </div> 
   
 </body>
