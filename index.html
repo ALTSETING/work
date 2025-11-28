@@ -79,7 +79,7 @@
   <!-- Кнопка додавання в гаманець -->
   <button onclick="addTokenToWallet()" 
     style="padding:16px 32px; font-size:20px; background:#00ff9d; color:black; font-weight:bold; border:none; border-radius:12px; cursor:pointer; margin:10px;">
-    ➕ Додати $ALT в MetaMask / Trust Wallet
+    ➕ Додати $ALTST в MetaMask / Trust Wallet
   </button>
   
   <br/>
@@ -95,8 +95,8 @@
 
 <script>
 // ←── ЗАМІНІТЬ ЦЮ АДРЕСУ НА СВОЮ ПІСЛЯ ДЕПЛОЮ ──→
-const TOKEN_ADDRESS = "0x0000000000000000000000000000000000000000"; // ← ваша справжня адреса
-const TOKEN_SYMBOL = "ALT";
+const TOKEN_ADDRESS = "0x01f287740b49430A2eF92fad2058e31a38C1704C"; // ← ваша справжня адреса
+const TOKEN_SYMBOL = "ALTST";
 const TOKEN_DECIMALS = 18;
 const TOKEN_IMAGE = "https://yourdomain.com/altsetting-logo-1024.png"; // PNG 1024×1024 з прозорим фоном
 
@@ -108,16 +108,16 @@ async function addTokenToWallet() {
         params: {
           type: "ERC20",
           options: {
-            address: TOKEN_ADDRESS,
-            symbol: TOKEN_SYMBOL,
-            decimals: TOKEN_DECIMALS,
+            address: 0x01f287740b49430A2eF92fad2058e31a38C1704C,
+            symbol: ALTST,
+            decimals: 18,
             image: TOKEN_IMAGE,
           },
         },
       });
 
       if (wasAdded) {
-        alert("✅ $ALT успішно додано в гаманець!");
+        alert("✅ $ALTST успішно додано в гаманець!");
       } else {
         alert("Користувач відхилив додавання токена");
       }
